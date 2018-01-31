@@ -1,5 +1,47 @@
 app-home {
-  ion-scroll {
-    padding: 15px;
-  }
+
+	ion-footer {
+		padding: 10px;
+		font-size: 0.7em;
+		color: #474747;
+		background-color: #f6f6f6;
+	}
+
+	ion-item-sliding {
+
+		margin-top: 10px;
+
+		.item {
+
+			background-color: #f6f6f6;
+			text-transform: uppercase;
+			padding: 10px;
+
+			.input-wrapper {
+				display: block;
+			}
+
+			.amount {
+				font-size: 0.7em;
+			}
+
+		}
+
+		ion-item-options {
+
+			.delete-button {
+				height: 100%;
+				margin: 0;
+			}
+
+		}
+
+	}
+
+	.value {
+		margin-top: 10px;
+		font-size: 1.2em;
+		color: #32db64;
+	}
+
 }
