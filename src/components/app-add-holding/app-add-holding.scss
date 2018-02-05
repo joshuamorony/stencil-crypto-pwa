@@ -1,0 +1,23 @@
+app-add-holding {
+
+	ion-footer {
+		padding: 10px;
+		font-size: 0.7em;
+		color: #474747;
+		background-color: #f6f6f6;
+	}
+
+	ion-content {
+
+		.scroll-inner {
+			padding: 10px !important;
+		}
+
+
+		button {
+			width: 100%;
+		}
+
+	}
+
+}

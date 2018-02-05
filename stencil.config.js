@@ -1,7 +1,7 @@
 exports.config = {
   bundles: [
     { components: ['my-app', 'app-home'] },
-    { components: ['app-profile'] },
+    { components: ['app-add-holding'] },
     { components: ['lazy-img'] }
   ],
   collections: [
