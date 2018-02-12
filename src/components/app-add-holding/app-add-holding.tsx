@@ -1,4 +1,6 @@
-import { Component } from '@stencil/core';
+import { Component, Prop } from '@stencil/core';
+import { RouterHistory } from '@stencil/router';
+import Holdings from '../../services/holdings';
 
 @Component({
 	tag: 'app-add-holding',
@@ -6,11 +8,21 @@ import { Component } from '@stencil/core';
 })
 export class AppAddHolding {
 
+	private holdingsService: Holdings = new Holdings();
+	private cryptoUnavailable: boolean = false;
+	private checkingValidity: boolean = false;
+	private noConnection: boolean = false;
 	private cryptoCode: string;
 	private displayCurrency: string;
 	private amountHolding: number;
 
+	@Prop() history: RouterHistory;
+
 	addHolding(){
+
+		this.cryptoUnavailable = false;
+		this.noConnection = false;
+		this.checkingValidity = true;
 
 		let holding = {
 			crypto: this.cryptoCode,
@@ -18,8 +30,23 @@ export class AppAddHolding {
 			amount: this.amountHolding || 0
 		};
 
-		console.log(holding);
-		// todo: handle adding holding
+		this.holdingsService.fetchPrice(holding).then((result) => {
+
+			console.log(result);
+
+			this.checkingValidity = false;
+
+			if(result.success){
+				this.holdingsService.addHolding(holding);
+				this.history.goBack();
+			} else {
+				this.cryptoUnavailable = true;
+			}
+
+		}).catch((err) => {
+			this.noConnection = true;
+			this.checkingValidity = false;
+		});
 
 	}
 

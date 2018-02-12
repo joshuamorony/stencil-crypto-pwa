@@ -8,6 +8,9 @@ import '@stencil/router';
 
 import '@ionic/core';
 
+import {
+  RouterHistory,
+} from '@stencil/router';
 
 import {
   AppAddHolding as AppAddHolding
@@ -33,7 +36,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppAddHoldingAttributes extends HTMLAttributes {
-      
+      history?: RouterHistory;
     }
   }
 }
